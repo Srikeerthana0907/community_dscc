@@ -13,8 +13,8 @@ export default function Chat({ currentUser }) {
   const [newGroupName, setNewGroupName] = useState('');
   
   const scrollRef = useRef();
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
-  const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || 'http://localhost:5000';
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://community-dscc.onrender.com/api';
+  const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || 'https://community-dscc.onrender.com';
   const E2EE_SECRET = 'joynet-super-secret-v1'; // In a real app, this would be a per-room derived key
 
   const encrypt = (text, key) => {

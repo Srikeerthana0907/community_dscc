@@ -6,7 +6,7 @@ export default function Auth({ onAuthSuccess }) {
   const [formData, setFormData] = useState({ username: '', email: '', password: '' });
   const [error, setError] = useState('');
 
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://community-dscc.onrender.com/api';
 
   const handleSubmit = async (e) => {
     e.preventDefault();

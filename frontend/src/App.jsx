@@ -3,7 +3,7 @@ import Auth from './components/Auth';
 import Chat from './components/Chat';
 import { MessageSquare, Layout, LogOut, Heart, Sparkles, Send, MessageCircle } from 'lucide-react';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://community-dscc.onrender.com/api';
 
 function App() {
   const [user, setUser] = useState(null);

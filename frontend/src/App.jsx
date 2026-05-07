@@ -3,7 +3,8 @@ import Auth from './components/Auth';
 import Chat from './components/Chat';
 import { MessageSquare, Layout, LogOut, Heart, Sparkles, Send, MessageCircle } from 'lucide-react';
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://community-dscc.onrender.com/api';
+import { fetchWithFallback } from './utils/api';
+
 
 function App() {
   const [user, setUser] = useState(null);
@@ -16,7 +17,7 @@ function App() {
 
   const fetchHealth = async () => {
     try {
-      const res = await fetch(`${API_BASE_URL}/health`);
+      const res = await fetchWithFallback('/health');
       if (res.ok) setError('');
       else setError('Backend is feeling a bit sleepy...');
     } catch (err) {
@@ -26,7 +27,7 @@ function App() {
 
   const fetchPosts = async () => {
     try {
-      const res = await fetch(`${API_BASE_URL}/posts`);
+      const res = await fetchWithFallback('/posts');
       if (res.ok) {
         const data = await res.json();
         setPosts(data);
@@ -66,7 +67,7 @@ function App() {
     if (!content.trim()) return;
     setLoading(true);
     try {
-      const res = await fetch(`${API_BASE_URL}/posts`, {
+      const res = await fetchWithFallback('/posts', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ content, author: user?.username || 'Anonymous' }),
@@ -82,7 +83,7 @@ function App() {
 
   const handleLike = async (postId) => {
     try {
-      const res = await fetch(`${API_BASE_URL}/posts/${postId}/like`, {
+      const res = await fetchWithFallback(`/posts/${postId}/like`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ username: user.username })
@@ -97,7 +98,7 @@ function App() {
     if (!text?.trim()) return;
 
     try {
-      const res = await fetch(`${API_BASE_URL}/posts/${postId}/comment`, {
+      const res = await fetchWithFallback(`/posts/${postId}/comment`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ text, author: user.username })

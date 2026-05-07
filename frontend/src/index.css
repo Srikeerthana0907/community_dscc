@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+:root {
+  --joy-sky: #e0f2fe;
+  --joy-ocean: #0ea5e9;
+  --joy-sun: #fef08a;
+  --joy-meadow: #4ade80;
+  --joy-bloom: #f472b6;
+  --joy-cloud: #f8fafc;
+  --joy-text: #1e293b;
+}
+
+body {
+  margin: 0;
+  font-family: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 50%, #f0fdf4 100%);
+  background-attachment: fixed;
+  color: var(--joy-text);
+  overflow-x: hidden;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+.happy-button {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 14px 0 rgba(14, 165, 233, 0.2);
+}
+
+.happy-button:hover {
+  transform: translateY(-2px) scale(1.02);
+  box-shadow: 0 6px 20px rgba(14, 165, 233, 0.3);
+}
+
+.happy-button:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.breezy-gradient {
+  background: linear-gradient(90deg, #0ea5e9, #4ade80);
+}
+
+.joy-gradient {
+  background: linear-gradient(90deg, #f472b6, #fb923c);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(14, 165, 233, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(14, 165, 233, 0.2);
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
